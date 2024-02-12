@@ -32,8 +32,15 @@
 					</div>
 		
 					<span class="sign-up-word">Nickname</span>
-					<div class="m-3">
-						<input type="text" name="name" class="form-control col-6" placeholder="닉네임을 입력하세요">
+					<div class="d-flex m-3">
+						<input type="text" id="name" name="name" class="form-control col-6" placeholder="닉네임을 입력하세요">
+						<button type="button" id="nameCheckBtn" class="btn btn-success">닉네임 사용 가능 확인</button>
+					</div>
+					
+					<div class="ml-3 mb-3">
+						<div id="nameDuplicated" class="small text-danger d-none">이미 사용중인 닉네임입니다.</div>
+						<div id="nameCheckOk" class="small text-success d-none">사용 가능한 닉네임입니다.</div>
+						<div id="nameLength" class="small text-danger d-none">닉네임은 12자 이내로 설정해주세요.</div>
 					</div>
 					
 					<br>
@@ -73,6 +80,36 @@ $(document).ready(function() {
 			}
 			, error: function(request, status, error) {
 				alert("중복확인에 실패했습니다.");
+			}
+		});
+	});
+	
+	$("#nameCheckBtn").on('click', function() {
+		
+		$('#nameDuplicated').addClass('d-none');
+		$('#nameCheckOk').addClass('d-none');
+		$('#nameLength').addClass('d-none');
+		
+		let name = $('#name').val();
+		
+		if(name.length > 13) {
+			$('#nameLength').removeClass('d-none');
+			return;
+		}
+		
+		$.ajax({
+			url:"/user/is-duplicated-name"
+			,data: {"name":name}
+		
+			,success:function(data) {
+				if (data.is_duplicated_name) {
+					$('#nameDuplicated').removeClass('d-none');
+				} else {
+					$('#nameCheckOk').removeClass('d-none');
+				}
+			}
+			,error:function(request, status, error) {
+				alert("닉네임 중복확인에 실패했습니다.");
 			}
 		});
 	});

@@ -33,4 +33,9 @@ public class UserBO {
 	public UserEntity getUserEntityByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
+	
+	// 닉넴 중복확인
+	public UserEntity getUserEntityByName(String name) {
+		return userRepository.findByName(name);
+	}
 }

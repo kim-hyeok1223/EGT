@@ -4,7 +4,7 @@
 <div class ="h-100 header bg-warning d-flex justify-content-between">
 	<!--  로고 -->
 	<a href="/egt/io">
-		<div class="logo d-flex align-items-center">
+		<div class="d-flex align-items-center">
 			<h1 class="text-white ml-3"><b>E</b>nd of the<br><b>G</b>ym for<br><b>T</b>oday</h1>
 		</div>
 	</a>

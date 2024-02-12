@@ -38,6 +38,23 @@ public class UserRestController {
 			
 			return result;
 		}
+		
+		// 닉네임
+		@RequestMapping("/is-duplicated-name")
+		public Map<String, Object> isDuplicatedName(@RequestParam("name") String name) {
+			
+			Map<String, Object> result = new HashMap<>();
+			result.put("is_duplicated_name", false);
+			
+			UserEntity user = userBO.getUserEntityByName(name);
+			result.put("code", 200);
+			
+			if (user != null) {
+				result.put("is_duplicated_name", true);
+			}
+			
+			return result;
+		}
 	
 	
 	

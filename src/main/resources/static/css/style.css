@@ -2,6 +2,7 @@
 
 a, a:hover {text-decoration: none;}
 header {height:150px; background-color:yellow;}
+footer {height:80px; background-color: yellow;}
 
 .sign-up-box {width:650px; margin-top:20px;}
 .sign-up-word {margin:20px; font-weight:bold;}
@@ -14,4 +15,4 @@ header {height:150px; background-color:yellow;}
 .intro-box {height:150px; background-color:#FFC939; margin-top: 20px;}
 .body-box {width:150px; height:50px; background-color: #f8d290; border-radius:10px; margin-top:50px;}
 .exercise-box {width: 200px; height: 50px; background-color: #f8d290; border-radius: 10px; padding: 5px;}
-.media-box {background-color:#FFC939; margin-top:60px;}
+.media-box {background-color:#FFC939; margin-top:60px; margin-bottom: 50px;}
