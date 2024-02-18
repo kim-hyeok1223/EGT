@@ -35,6 +35,10 @@ public class UserEntity {
 	
 	private String email;
 	
+	private int height;
+	
+	private int weight;
+	
 	@UpdateTimestamp
 	@Column(name="createdAt", updatable = false)
 	private ZonedDateTime createdAt;

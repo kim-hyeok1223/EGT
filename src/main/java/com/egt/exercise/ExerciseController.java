@@ -38,4 +38,11 @@ public class ExerciseController {
 		model.addAttribute("viewName", "body/arms");
 		return "template/layout";
 	}
+	
+	@GetMapping("/program")
+	public String programView(Model model) {
+		model.addAttribute("viewName", "program/workout");
+		return "template/layout";
+	}
+	
 }

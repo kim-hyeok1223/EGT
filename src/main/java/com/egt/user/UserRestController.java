@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.egt.common.EncryptUtils;
 import com.egt.user.bo.UserBO;
 import com.egt.user.entity.UserEntity;
 
@@ -64,9 +65,14 @@ public class UserRestController {
 	public Map<String, Object> signUp(
 			@RequestParam("email") String email,
 			@RequestParam("password") String password,
-			@RequestParam("name") String name) {
+			@RequestParam("name") String name,
+			@RequestParam("height") int height,
+			@RequestParam("weight") int weight) {
 		
-		Integer userId = userBO.addUser(email, password, name);
+		String hashedPassword = EncryptUtils.md5(password);
+
+		Integer userId = userBO.addUser(email, hashedPassword, name, height, weight);
+
 		
 		Map<String, Object> result = new HashMap<>();
 		if (userId != null) {
@@ -87,7 +93,9 @@ public class UserRestController {
 			@RequestParam("password") String password,
 			HttpServletRequest request) {
 		
-		UserEntity user = userBO.getUserEntityByEmailPassword(email, password);
+		String hashedPassword = EncryptUtils.md5(password);
+
+		UserEntity user = userBO.getUserEntityByEmailPassword(email, hashedPassword);
 		
 		Map<String, Object> result = new HashMap<>();
 		if(user != null) {
@@ -95,6 +103,8 @@ public class UserRestController {
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userEmail", user.getEmail());
 			session.setAttribute("userName", user.getName());
+			session.setAttribute("userHeight", user.getHeight());
+			session.setAttribute("userWeight", user.getWeight());
 			
 			result.put("code", 200);
 			result.put("result", "성공");

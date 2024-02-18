@@ -12,7 +12,7 @@
 		</nav>
 		<div class="d-flex">
 			<div>
-				<a href="#">
+				<a href="/exercise/program">
 					<div class="bg-warning main-box m-5 d-flex justify-content-center align-items-center">
 						<div class="text-center">
 							<h2 class="text-white">운동 프로그램</h2>
