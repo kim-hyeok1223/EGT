@@ -1,14 +1,26 @@
-package com.egt.exercise;
+package com.egt.program;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.egt.exercise.bo.ExerciseBO;
+import com.egt.exercise.domain.Program;
+
+import jakarta.servlet.http.HttpSession;
 
 @RequestMapping("/exercise")
 @Controller
 public class ExerciseController {
 
+	@Autowired
+	private ExerciseBO exerciseBO;
+	
 	@GetMapping("/chest")
 	public String chestView(Model model) {
 		model.addAttribute("viewName", "body/chest");
@@ -41,8 +53,25 @@ public class ExerciseController {
 	
 	@GetMapping("/program")
 	public String programView(Model model) {
+		
+		List<Program> exerciseList = exerciseBO.getProgramList();
+
+		model.addAttribute("exerciseList", exerciseList);
 		model.addAttribute("viewName", "program/workout");
 		return "template/layout";
 	}
+	
+	@GetMapping("/program/program-detail-view")
+	public String programDetailView(
+			@RequestParam("postId") int postId,
+			Model model,HttpSession session) {
+		
+		Program exercise = exerciseBO.getPostByPostId(postId);
+		
+		model.addAttribute("exercise", exercise);
+		model.addAttribute("viewName", "program/programDetail");
+		return "template/layout";
+	}
+	
 	
 }

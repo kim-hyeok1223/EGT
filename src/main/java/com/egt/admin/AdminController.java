@@ -1,9 +1,15 @@
 package com.egt.admin;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.egt.exercise.bo.ExerciseBO;
+import com.egt.exercise.domain.Program;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -11,6 +17,9 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class AdminController {
 
+	@Autowired
+	private ExerciseBO exerciseBO;
+	
 	@GetMapping("/egt/io")
 	public String adminMainView(Model model, HttpSession session) {
 		
@@ -120,8 +129,12 @@ public class AdminController {
 		String name = (String)session.getAttribute("userName");
 		String adminEmail = "admin@admin";
 		String adminName = "admin";
+		
+		List<Program> exerciseList = exerciseBO.getProgramList();
+		
 		if (email.equals(adminEmail) && name.equals(adminName)) { 
 			model.addAttribute("viewName", "adminProgram/workout");
+			model.addAttribute("exerciseList", exerciseList);
 			return "adminTemplate/layout";
 		} else {
 			model.addAttribute("viewName", "program/workout");
@@ -141,6 +154,22 @@ public class AdminController {
 			return "adminTemplate/layout";
 		} else {
 			model.addAttribute("viewName", "program/workout");
+			return "template/layout";
+		}
+	}
+	
+	@GetMapping("/exercise/add")
+	public String adminExerciseAddView(Model model, HttpSession session) {
+		
+		String email = (String)session.getAttribute("userEmail");
+		String name = (String)session.getAttribute("userName");
+		String adminEmail = "admin@admin";
+		String adminName = "admin";
+		if (email.equals(adminEmail) && name.equals(adminName)) { 
+			model.addAttribute("viewName", "exercise/addExercise");
+			return "adminTemplate/layout";
+		} else {
+			model.addAttribute("viewName", "main/main");
 			return "template/layout";
 		}
 	}

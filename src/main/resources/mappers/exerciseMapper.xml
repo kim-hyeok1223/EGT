@@ -24,4 +24,32 @@
  		)
  	
  	</insert>
+ 	
+ 	<select id="selectProgram" resultType="com.egt.exercise.domain.Program">
+ 		SELECT
+ 			`id`
+ 			,`userId`
+			,`subject`
+			,`content`
+			,`imagePath`
+			,`createdAt`
+			,`updatedAt`
+ 		FROM
+ 			`program_post`
+ 	</select>
+ 	
+ 	<select id="selectPostByPostId" resultType="com.egt.exercise.domain.Program">
+ 		SELECT
+ 			`id`
+ 			,`userId`
+			,`subject`
+			,`content`
+			,`imagePath`
+			,`createdAt`
+			,`updatedAt`
+ 		FROM
+ 			`program_post`
+ 		WHERE
+ 			`id`= #{postId}
+ 	</select>
  </mapper>

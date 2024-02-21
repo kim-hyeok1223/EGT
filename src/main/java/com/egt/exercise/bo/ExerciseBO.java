@@ -1,10 +1,13 @@
 package com.egt.exercise.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.egt.common.FileManagerService;
+import com.egt.exercise.domain.Program;
 import com.egt.exercise.mapper.ExerciseMapper;
 
 @Service
@@ -28,4 +31,13 @@ public class ExerciseBO {
 		
 		exerciseMapper.insertProgram(userId, subject, content, imagePath);
 	}
+	
+	public List<Program> getProgramList() {
+		return exerciseMapper.selectProgram();
+	}
+	
+	public Program getPostByPostId(int postId) {
+		return exerciseMapper.selectPostByPostId(postId);
+	}
+	
 }

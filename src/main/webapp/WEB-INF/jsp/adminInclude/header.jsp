@@ -8,6 +8,12 @@
 			<h1 class="text-white ml-3"><b>E</b>nd of the<br><b>G</b>ym for<br><b>T</b>oday</h1>
 		</div>
 	</a>
+	
+	<div class="d-flex align-items-center mr-5">
+			<a href="#" class="ml-5 text-white font-weight-bold">회원정보확인</a>
+			<a href="/admin/exercise/add" class="ml-5 text-white font-weight-bold">운동종목 관리하기</a>
+	</div>
+	
 	<div class="d-flex align-items-center mr-5">
 		<c:if test="${empty userId}">
 			<a href="/user/sign-in-view" class="ml-2 text-white font-weight-bold">로그인</a>

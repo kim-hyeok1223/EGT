@@ -11,12 +11,16 @@
 
 <!--  타이틀 끝 / 프로그램 포스팅 시작-->
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="container">
+	<c:forEach items="${exerciseList}" var="ex">
+	<a href="/exercise/program/program-detail-view?postId=${ex.id}">
 	<div class="program-box">
-		<div class="d-flex justify-content-start m-5 p-4">
-			<span>제목 적는 란 </span>
+		<div class="program-box d-flex justify-content-center">
+			<h3 class="text-dark mt-5"><b>${ex.subject}</b> </h3>
 		</div>
 	</div>
+	</a>
+	</c:forEach>
 </div>
 
-</div>	
+	

@@ -1,4 +1,4 @@
-package com.egt.exercise;
+package com.egt.program;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -27,14 +27,17 @@
 					</div>
 				</a>
 			</div>
-			<div>
-				<a href="#">
+			<div class="d-flex justify-content-center align-items-center">
+			<!-- 
+				<a href="/mypage/calendar">
 					<div class="bg-warning main-box m-5 d-flex justify-content-center align-items-center">
 						<div class="text-center">
 							<h2 class="text-white">캘린더</h2>
 						</div>
 					</div>
 				</a>
+			 -->
+			<jsp:include page="../calendar/calendar.jsp" />
 			</div>
 			<div>
 				<a href="#">

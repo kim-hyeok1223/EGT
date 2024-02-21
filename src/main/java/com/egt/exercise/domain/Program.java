@@ -7,7 +7,7 @@ import lombok.ToString;
 
 @ToString
 @Data
-public class Exercise {
+public class Program {
 
 	private int id;
 	private int userId;
