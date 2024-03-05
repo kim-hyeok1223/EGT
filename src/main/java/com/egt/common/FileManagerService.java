@@ -15,10 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 @Component 
 public class FileManagerService {
 
-	// 실제 업로드 된 이미지가 저장될 경로(서버)
+	
 	public static final String FILE_UPLOAD_PATH = "D:\\coding\\EGT\\workspace\\images/";
 	
-	// input:File 원본, userLoginId(폴더명)  output: 이미지 경로
+	
 	public String saveFile(String loginId, MultipartFile file) {
 		
 		String directoryName = loginId + "_" + System.currentTimeMillis();
@@ -30,7 +30,7 @@ public class FileManagerService {
 			return null;
 		}
 		
-		// 파일 업로드: byte 단위로 업로드
+		
 		try {
 			byte[] bytes = file.getBytes();
 			Path path = Paths.get(filePath + "/" + file.getOriginalFilename());
@@ -43,7 +43,6 @@ public class FileManagerService {
 		return "/images/" + directoryName + "/" + file.getOriginalFilename();
 	}
 	
-	// input:imagePath       output:X
 	public void deleteFile(String imagePath) { 
 		Path path = Paths.get(FILE_UPLOAD_PATH + imagePath.replace("/images/", ""));
 		

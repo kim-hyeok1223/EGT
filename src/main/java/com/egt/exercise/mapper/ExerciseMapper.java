@@ -5,18 +5,14 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.egt.exercise.domain.Program;
+import com.egt.exercise.domain.Exercise;
 
 @Mapper
 public interface ExerciseMapper {
 
-	public void insertProgram(
-			@Param("userId") int userId, 
-			@Param("subject") String subject, 
-			@Param("content") String content, 
+	public void insertExercise(
+			@Param("exerciseNm") String exerciseNm, 
 			@Param("imagePath") String imagePath);
 	
-	public List<Program> selectProgram();
-	
-	public Program selectPostByPostId(int postId);
+	public List<Exercise> selectExercise();
 }

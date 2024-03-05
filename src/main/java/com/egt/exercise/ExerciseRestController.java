@@ -1,4 +1,4 @@
-package com.egt.program;
+package com.egt.exercise;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,24 +14,22 @@ import com.egt.exercise.bo.ExerciseBO;
 
 import jakarta.servlet.http.HttpSession;
 
-@RequestMapping("/admin/exercise/program")
+@RequestMapping("/admin/exercise")
 @RestController
-public class ExerciseRestcontroller {
+public class ExerciseRestController {
 
 	@Autowired
 	private ExerciseBO exerciseBO;
 	
-	@PostMapping("/create")
+	@PostMapping("/add")
 	public Map<String, Object> create(
-			@RequestParam("subject") String subject,
-			@RequestParam("content") String content,
+			@RequestParam("exerciseNm") String exerciseNm,
 			@RequestParam(value = "file", required = false) MultipartFile file,
 			HttpSession session) {
 		
-		int userId = (int)session.getAttribute("userId");
 		String userName = (String)session.getAttribute("userName");
 		
-		exerciseBO.addProgram(userId, userName, subject, content, file);
+		exerciseBO.addExercise(userName, exerciseNm, file);
 		
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 200);

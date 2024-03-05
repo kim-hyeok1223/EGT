@@ -1,6 +1,8 @@
 package com.egt.admin;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.egt.exercise.bo.ExerciseBO;
-import com.egt.exercise.domain.Program;
+import com.egt.program.bo.ProgramBO;
+import com.egt.program.domain.Program;
+import com.egt.user.bo.UserBO;
+import com.egt.user.entity.UserEntity;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -18,7 +22,10 @@ import jakarta.servlet.http.HttpSession;
 public class AdminController {
 
 	@Autowired
-	private ExerciseBO exerciseBO;
+	private ProgramBO exerciseBO;
+	
+	@Autowired
+	private UserBO userBO;
 	
 	@GetMapping("/egt/io")
 	public String adminMainView(Model model, HttpSession session) {
@@ -175,5 +182,33 @@ public class AdminController {
 	}
 	
 
-	
+	@GetMapping("/userInfo")
+	public String adminUserInfoView(Model model, HttpSession session) {
+	    String email = (String)session.getAttribute("userEmail");
+	    String name = (String)session.getAttribute("userName");
+	    String adminEmail = "admin@admin";
+	    String adminName = "admin";
+	    if (email.equals(adminEmail) && name.equals(adminName)) {
+	        List<UserEntity> userList = userBO.getAllUserEntities();
+	        
+	        // ZonedDateTime을 문자열로 변환하여 모델에 추가
+	        List<String> createdAtList = userList.stream()
+	                                            .map(user -> user.getCreatedAt().toString())
+	                                            .collect(Collectors.toList());
+	        List<String> updatedAtList = userList.stream()
+	                                            .map(user -> user.getUpdatedAt().toString())
+	                                            .collect(Collectors.toList());
+
+	        model.addAttribute("userList", userList);
+	        model.addAttribute("createdAtList", createdAtList); 
+	        model.addAttribute("viewName", "adminUser/userInfo");
+	        return "adminTemplate/layout";
+	    } else {
+	        model.addAttribute("viewName", "main/main");
+	        return "template/layout";
+	    }
+	}
+
 }
+	
+

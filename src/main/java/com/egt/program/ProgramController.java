@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.egt.exercise.bo.ExerciseBO;
-import com.egt.exercise.domain.Program;
+import com.egt.program.bo.ProgramBO;
+import com.egt.program.domain.Program;
 
 import jakarta.servlet.http.HttpSession;
 
 @RequestMapping("/exercise")
 @Controller
-public class ExerciseController {
+public class ProgramController {
 
 	@Autowired
-	private ExerciseBO exerciseBO;
+	private ProgramBO exerciseBO;
 	
 	@GetMapping("/chest")
 	public String chestView(Model model) {

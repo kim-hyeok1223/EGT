@@ -1,4 +1,4 @@
-package com.egt.exercise.domain;
+package com.egt.mypage.domain;
 
 import java.util.Date;
 
@@ -7,13 +7,15 @@ import lombok.ToString;
 
 @ToString
 @Data
-public class Program {
+public class Routine {
 
 	private int id;
 	private int userId;
+	private int routineId;
 	private String subject;
-	private String content;
-	private String imagePath;
+	private int exerciseId;
+	private int weight;
+	private int set;
 	private Date createdAt;
 	private Date updatedAt;
 }

@@ -29,8 +29,8 @@ $(document).ready(function() {
 		let exerciseNm = $("#exerciseNm").val();
 		let fileName = $("#file").val();
 
-		if (!subject) {
-			alert("제목을 입력하세요.");
+		if (!exerciseNm) {
+			alert("운동제목을 입력하세요.");
 			return;
 		}
 		

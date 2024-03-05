@@ -1,5 +1,7 @@
 package com.egt.user.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +41,13 @@ public class UserBO {
 	// 닉넴 중복확인
 	public UserEntity getUserEntityByName(String name) {
 		return userRepository.findByName(name);
+	}
+	// 유저 모든 정보
+	public List<UserEntity> getAllUserEntities() {
+	    return userRepository.findAll();
+	}
+	// 유저 삭제
+	public void deleteUserByUserId(int userId) {
+		 userRepository.deleteById(userId);
 	}
 }

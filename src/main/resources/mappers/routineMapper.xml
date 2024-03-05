@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.egt.mypage.mapper.RoutineMapper">
+    <insert id="insertRoutine" parameterType="map">
+        INSERT INTO `routine_making`
+        (   
+        	`id`,
+            `userId`,
+            `subject`,
+            `exerciseId`,
+            `weight`,
+            `set`,
+            `createdAt`,
+            `updatedAt`
+        )
+        VALUES
+        (
+            #{userId},
+            #{subject},
+            #{exerciseId},
+            #{weight},
+            #{set},
+            NOW(),
+            NOW()
+        )
+    </insert>
+    
+    <select id="selectRoutine" resultType="com.egt.mypage.domain.Routine">
+ 		SELECT
+ 			`id`,
+ 			`userId`,
+            `subject`,
+            `exerciseId`,
+            `weight`,
+            `set`,
+            `createdAt`,
+            `updatedAt`
+ 		FROM
+ 			`routine_making`
+ 		GROUP BY
+ 			`subject`
+ 	</select>
+ 	
+ 	<select id="selectRoutineListByUserId" resultType="com.egt.mypage.domain.Routine">
+ 		SELECT
+    		`subject`,
+		    ANY_VALUE(`id`) AS `id`,
+		    ANY_VALUE(`userId`) AS `userId`,
+		    ANY_VALUE(`exerciseId`) AS `exerciseId`,
+		    ANY_VALUE(`weight`) AS `weight`,
+		    ANY_VALUE(`set`) AS `set`,
+		    ANY_VALUE(`createdAt`) AS `createdAt`,
+		    ANY_VALUE(`updatedAt`) AS `updatedAt`
+		FROM
+		    `routine_making`
+		WHERE
+		    `userId` = #{userId}
+		GROUP BY
+		    `subject`;
+
+ 	</select>
+</mapper>

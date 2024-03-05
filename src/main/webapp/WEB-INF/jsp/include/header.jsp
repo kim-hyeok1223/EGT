@@ -15,6 +15,7 @@
 		<c:if test="${not empty userId}">
 			<span><b>${userName} 님</b></span>
 			<a href="/user/sign-out" class="ml-2 text-white font-weight-bold">로그아웃</a>
+			<a href="/mypage/mainPage" class="ml-2 text-white font-weight-bold">마이페이지</a>
 			<c:if test="${userName eq 'admin'}">
 				<a href="/admin/egt/io" class="ml-2 text-white font-weight-bold">관리자페이지</a>
 			</c:if>

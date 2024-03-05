@@ -10,7 +10,7 @@
 	</a>
 	
 	<div class="d-flex align-items-center mr-5">
-			<a href="#" class="ml-5 text-white font-weight-bold">회원정보확인</a>
+			<a href="/admin/userInfo" class="ml-5 text-white font-weight-bold">회원정보확인</a>
 			<a href="/admin/exercise/add" class="ml-5 text-white font-weight-bold">운동종목 관리하기</a>
 	</div>
 	

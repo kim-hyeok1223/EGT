@@ -10,7 +10,7 @@
 	            <li class="nav-item"><a href="/exercise/arms" class="nav-link text-dark font-weight-bold">팔</a></li>
 	        </ul>
 		</nav>
-		<div class="d-flex">
+		<div class="d-flex jusitfy-content-between">
 			<div>
 				<a href="/exercise/program">
 					<div class="bg-warning main-box m-5 d-flex justify-content-center align-items-center">
@@ -19,7 +19,7 @@
 						</div>
 					</div>
 				</a>
-				<a href="#">
+				<a href="/mypage/routineMaking">
 					<div class="bg-warning main-box m-5 d-flex justify-content-center align-items-center">
 						<div class="text-center">
 							<h2 class="text-white">운동 루틴 만들기</h2>
@@ -27,7 +27,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="d-flex justify-content-center align-items-center">
+			<div class="d-flex justify-content-center align-items-center w-50">
 			<!-- 
 				<a href="/mypage/calendar">
 					<div class="bg-warning main-box m-5 d-flex justify-content-center align-items-center">
@@ -37,20 +37,20 @@
 					</div>
 				</a>
 			 -->
-			<jsp:include page="../calendar/calendar.jsp" />
+			<jsp:include page="../calendar/mainCalendar.jsp" />
 			</div>
 			<div>
-				<a href="#">
+				<a href="/routineRanking/list">
 					<div class="bg-warning main-box m-5 d-flex justify-content-center align-items-center">
 						<div class="text-center">
 							<h2 class="text-white">routine ranking</h2>
 						</div>
 					</div>
 				</a>
-				<a href="#">
+				<a href="/mypage/calendar">
 					<div class="bg-warning main-box m-5 d-flex justify-content-center align-items-center">
 						<div class="text-center">
-							<h2 class="text-white">오운완 인증하기</h2>
+							<h2 class="text-white">운동 일정 만들기</h2>
 						</div>
 				</a>
 			</div>		
