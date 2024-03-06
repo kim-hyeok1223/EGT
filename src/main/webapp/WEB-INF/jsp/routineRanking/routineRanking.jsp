@@ -16,7 +16,7 @@
 	<a href="/exercise/program/program-detail-view?routineId=${routine.id}">
 	<div class="program-box">
 		<div class="program-box d-flex justify-content-center">
-			<h3 class="text-dark mt-5"><b>${userName}님의 ${routine.subject}</b> </h3>
+			<h3 class="text-dark mt-5"><b>${routine.subject}</b> </h3>
 		</div>
 	</div>
 	</a>

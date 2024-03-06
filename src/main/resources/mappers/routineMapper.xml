@@ -6,7 +6,7 @@
     <insert id="insertRoutine" parameterType="map">
         INSERT INTO `routine_making`
         (   
-        	`id`,
+        	
             `userId`,
             `subject`,
             `exerciseId`,
